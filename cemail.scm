@@ -27,20 +27,19 @@
 
 ;; (pretty-print (get-rows "202104140227"))
 
-(define an-item '(("email" . "Leen.Delang@kuleuven.be")
+(define an-item '(("email" . "plapan@disroot.org")
   ("journal" . "Microorganisms")
   ("title"
    .
    "Repurposing Drugs for Mayaro Virus: Identification of EIDD-1931, Favipiravir and Suramin as Mayaro Virus Inhibitors.")
   ("firstn" . "Rana")))
 
-(assoc-ref an-item "email")
 
 (define (get-rand-file-name pre suff)
   (string-append "tmp/" pre "-" (number->string (random 10000000000000000000000)) "." suff))
 
 
-(define (make-custom-email item)
+(define (send-custom-email item)
   ;; an item is a list with needed elements from query
   ;; (("email" . "Leen.Delang@kuleuven.be")
   ;;  ("journal" . "Microorganisms")
@@ -79,17 +78,16 @@ Evaluate the software by visiting www.labsolns.com/software/evaluate/\n\nFor mor
 	 (dummy (begin
 		  (put-string p2 txt-composite )
 		  (force-output p2)))
-	 (smtp-command (string-append "./bin/smtp-cli --verbose --host mail.labsolns.com:587 --subject LIMS development --enable-auth --user info@labsolns.com --password EKhD8GB48F8wFalt --from info@labsolns.com --to " (assoc-ref an-item "email") " --body-plain " txt-file-name " --body-html " html-file-name " --attach-inline tmp/las.png"))
+	 (smtp-command (string-append "/home/mbc/bin/smtp-cli --host mail.labsolns.com:587 --subject 'Multi-well plate management software' --enable-auth --user info@labsolns.com --password EKhD8GB48F8wFalt --from info@labsolns.com --to " (assoc-ref an-item "email") " --bcc info@labsolns.com --body-plain /home/mbc/projects/conmanv2/" txt-file-name " --body-html /home/mbc/projects/conmanv2/" html-file-name " --attach-inline /home/mbc/projects/conmanv2/tmp/las.png"))
+	 (dummy (system smtp-command))
 	 )
-    
-
+ 
   smtp-command
   ))
 
 
 
 (pretty-print (make-custom-email an-item))
-
 
 
 
