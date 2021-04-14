@@ -1,0 +1,20 @@
+Hi ,
+
+Does your organization need assistance with LIMS development?
+Visit Laboratory Automation Solutions at www.labsolns.com and learn how LIMS*Nucleus can help you.
+
+LIMS*Nucleus can:
+
+-Reformat plates - four 96 well plates into a 384 well plate; four 384 well plates into a 1536 well plate
+-Associate assay data with plate sets
+-Identify hits scoring in assays using included algorithms - or write your own
+-Export annotated data
+-Generate worklists for liquid handling robots
+-Rearray hits into a smaller collection of plates
+-Track samples
+
+LIMS*Nucleus can serve as the core of a LIMS system.
+Prototype algorithms, dashboards, visualizations with R/Shiny.
+Test a copy at www.labsolns.com
+
+For more information contact info@labsolns.com

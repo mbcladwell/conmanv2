@@ -11,6 +11,8 @@ https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=96+mul
 <Id>33782712</Id>
 <Id>33781022</Id>
 
+https://pubmed.ncbi.nlm.nih.gov/33807492
+
 (define myurl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=33782712,33781022,33085113,32866150")
  (define all-summaries   (receive (response-status response-body)
 			     (http-request myurl) response-body))
@@ -92,6 +94,7 @@ https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=96+mul
 
 (define (make-ref-sql pmid journal title sql)
   ;;must pass in sql: INSERT INTO ref (pmid, journal, title) VALUES
+  ;; full SQL statement will be created for insert into the ref table
   (if (null? (cdr pmid))
       (begin
 	    (set! sql (string-append  sql "('" (car pmid) "', '" (car journal) "', '" (car title)  "')"))
