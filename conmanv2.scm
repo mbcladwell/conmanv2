@@ -1,10 +1,12 @@
-#!guile -e main -s
+#! /usr/bin/guile \
+-e main -s
 !#
 
 ;; #!/gnu/store/0w76khfspfy8qmcpjya41chj3bgfcy0k-guile-3.0.4/bin/guile \
 
+;; (add-to-load-path "/home/mbc/projects")
 
- (add-to-load-path "/home/mbc/projects")
+ (add-to-load-path "/home/admin")
 
 (use-modules (web client)
 	     ;; (htmlprag)
