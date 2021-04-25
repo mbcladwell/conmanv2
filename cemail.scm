@@ -1,11 +1,12 @@
-#!guile -e main -s
+#!/usr/bin/guile \
+-e main -s
 !#
 ;; Retrieve rows from mysql and process each row by sending a custom email
  (add-to-load-path "/home/mbc/projects")
 
-(define-module (conmanv2 cemail)
-  #:export (get-rows
-	    ))
+;; (define-module (conmanv2 cemail)
+;;   #:export (get-rows
+;; 	    ))
 
 (use-modules  (ice-9 regex) ;;list-matches
 	      (ice-9 textual-ports)
@@ -17,12 +18,16 @@
 (define (get-todays-batchid)
   (let*((bid-pre (date->string  (current-date) "~Y~m~d"))
 	;;(sql (string-append "SELECT DISTINCT batchid FROM conman WHERE  batchid LIKE '" bid-pre "%'"))
-	(sql (string-append "SELECT DISTINCT batchid FROM conman WHERE  batchid LIKE '20210414%'"))	
+	(sql (string-append "SELECT DISTINCT batchid FROM conman WHERE  batchid LIKE '" bid-pre "%'"))	
 	(ciccio (dbi-open "mysql" "plapan_conman_ad:welcome:plapan_conman:tcp:192.254.187.215:3306"))
 	(dummy (dbi-query ciccio sql))
 	(ret (dbi-get_row ciccio))
-   	(dummy (dbi-close ciccio)))
+	(dummy (dbi-close ciccio))
+	)
+ ;;   ret))
     (number->string (assoc-ref ret "batchid"))))
+
+;; (get-todays-batchid)
 
 
 (define (get-rows batchid)
@@ -99,7 +104,6 @@
 
 
 (define (main args)
-  ;; args: '( "script name" )
   (let* (
 	 (bid (get-todays-batchid))
 	 (all-rows (get-rows bid))
@@ -108,6 +112,6 @@
     #f))
   
 
-;; (main "cemail.scm")
+ ;;(main "cemail.scm")
  
 ;; (pretty-print (get-rows "202104140227"))
