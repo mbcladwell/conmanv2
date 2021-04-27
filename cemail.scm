@@ -71,8 +71,8 @@
 	 (email (assoc-ref item "email"))
 	 (first-name (if (fname-from-email email) (fname-from-email email)(assoc-ref item "firstn")))
 	 (html-composite (string-append str1 first-name  str2 (assoc-ref item "title") str3 (assoc-ref item "journal") str4 ))
-;;	 (dummy (system "rm tmp/rnd*.txt"))
-;;	 (dummy (system "rm tmp/rnd*.html"))
+	 (dummy (system "rm tmp/rnd*.txt"))
+	 (dummy (system "rm tmp/rnd*.html"))
 	 (html-file-name (get-rand-file-name "rnd" "html"))
 	 (p  (open-output-file html-file-name))
 	 (dummy (begin
@@ -89,7 +89,7 @@
 		  (put-string p2 txt-composite )
 		  (force-output p2)))
 	 (smtp-command (string-append "/home/mbc/bin/smtp-cli --host mail.labsolns.com:587 --subject 'Multi-well plate management software' --enable-auth --user info@labsolns.com --password EKhD8GB48F8wFalt --from info@labsolns.com --to " (assoc-ref item "email") " --bcc info@labsolns.com --body-plain /home/mbc/projects/conmanv2/" txt-file-name " --body-html /home/mbc/projects/conmanv2/" html-file-name " --attach-inline /home/mbc/projects/conmanv2/tmp/las.png"))
-	;; (dummy (system smtp-command))
+	 (dummy (system smtp-command))
 	 )
  
   smtp-command
@@ -112,6 +112,3 @@
     #f))
   
 
- ;;(main "cemail.scm")
- 
-;; (pretty-print (get-rows "202104140227"))

@@ -1,4 +1,4 @@
-#!/gnu/store/0w76khfspfy8qmcpjya41chj3bgfcy0k-guile-3.0.4/bin/guile \
+#!/gnu/store/q8brh7j5mwy0hbrly6hjb1m3wwndxqc8-guile-3.0.5/bin/guile \
 -e main -s
 !#
 
@@ -365,7 +365,7 @@
 
 
 ;; (define sql-statement "INSERT INTO conman ( pmid, qname, wholen, firstn, lastn, affil, email ) VALUES ")
-(define ciccio (dbi-open "postgresql" "postgres:welcome:conman:tcp:192.168.1.17:6543"))
+(define ciccio (dbi-open "postgresql" "postgres:postgres:conman:tcp:192.168.1.17:5432"))
 
 ;; (define (join-summary-article  a-summary an-article )
 ;;   (let* ((a (map cons (cadr a-summary) an-article)    )
